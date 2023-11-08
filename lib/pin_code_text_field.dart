@@ -516,7 +516,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
       pinBoxColor = widget.pinBoxColor;
     }
 
-    if (widget.pinBoxDecoration != null) {
+    if (widget.pinBoxDecoration != null  && _shouldHighlight(i)) {
       boxDecoration = widget.pinBoxDecoration!(
         borderColor,
         pinBoxColor,
