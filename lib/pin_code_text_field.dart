@@ -143,11 +143,13 @@ class PinCodeTextField extends StatefulWidget {
   final EdgeInsets pinBoxOuterPadding;
   final bool hasUnderline;
   final List<TextInputFormatter> formatters;
+  final bool allowShadowInHighlightItemOnly;
 
   const PinCodeTextField({
     Key? key,
     this.isCupertino: false,
     this.maxLength: 4,
+    this.allowShadowInHighlightItemOnly: false,
     this.controller,
     this.hideCharacter: false,
     this.highlight: false,
@@ -516,7 +518,8 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
       pinBoxColor = widget.pinBoxColor;
     }
 
-    if (widget.pinBoxDecoration != null  && _shouldHighlight(i)) {
+    if (widget.pinBoxDecoration != null &&
+        (widget.allowShadowInHighlightItemOnly ? _shouldHighlight(i) : true)) {
       boxDecoration = widget.pinBoxDecoration!(
         borderColor,
         pinBoxColor,
